@@ -5,7 +5,6 @@ import cv2
 import numpy as np
 import pyautogui
 import os
-from gtts import gTTS
 import pygame
 
 def find_image_on_screen(image_folder, threshold=0.8):
@@ -37,13 +36,8 @@ def find_image_on_screen(image_folder, threshold=0.8):
 if __name__ == "__main__":
     language = 'pl'
     time.sleep(5)
-    #pygame.mixer.init()
 
     print("Gram na decku kartosza")
-    #myobj = gTTS(text="Zaczynam.", lang=language, slow=False)
-    #myobj.save("mowa.mp3")
-    #pygame.mixer.music.load("mowa.mp3")
-    #pygame.mixer.music.play()
     while True:
         try:
             image_folder = "guwno"
@@ -51,19 +45,11 @@ if __name__ == "__main__":
             result = find_image_on_screen(image_folder, threshold)
 
             if result:
-
                 x, y, image_name = result
                 print(f"Found image '{image_name}' at coordinates: ({x}, {y})")
                 print()
-
-                #myobj = gTTS(text="Wykryłem obrazek.", lang=language, slow=False)
-                #myobj.save("mowa.mp3")
-
-                #pygame.mixer.music.load("mowa.mp3")
-                #pygame.mixer.music.play()
-
                 if image_name == "egiant.png":
-                    print("Widzę elektro chuja. To czas na push.")
+                    print("Widzę elektro gianta. To czas na push.")
                     pyautogui.moveTo(x, y)
                     pyautogui.dragTo(x, (y - 400), button='left', duration=0.3)
                 elif image_name == "fireball.png":
@@ -84,7 +70,7 @@ if __name__ == "__main__":
                     result = find_image_on_screen("log", 0.9) # CUSTOMOWY TRESHOLD DO GOBLINOW
                     if result:
                         x, y, image_name = result
-                        print(f"Wykryto Izraelskie Świnie (Żydzi). '{image_name}' Uwalniam palestyne. ({x}, {y})")
+                        print(f"Wykryto gobliny. '{image_name}' Daje loga. ({x}, {y})")
                         pyautogui.dragTo(x, (nigaY-400), button='left', duration=0.3)
                     else:
                         result = find_image_on_screen("przeciwnik", threshold)
